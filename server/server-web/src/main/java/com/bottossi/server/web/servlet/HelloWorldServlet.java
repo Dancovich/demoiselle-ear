@@ -30,7 +30,7 @@ public class HelloWorldServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
-		logger.debug("Iniciando processamento da requisição");
+		logger.info("Iniciando processamento da requisição");
 		
 		String mensagem = helloFacade.hello();
 		String color = config.getColor();
@@ -38,8 +38,8 @@ public class HelloWorldServlet extends HttpServlet {
 		response.getWriter().write(
 				"<h1 style='color: " + color + "'>" + mensagem + "</h1>");
 		
-		logger.debug("Cor obtida: " + color);
-		logger.debug("Finalizando processamento da requisição");
+		logger.info("Cor obtida: " + color);
+		logger.info("Finalizando processamento da requisição");
 	}
 
 }
