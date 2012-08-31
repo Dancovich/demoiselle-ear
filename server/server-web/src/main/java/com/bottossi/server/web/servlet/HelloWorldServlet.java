@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 
 import com.bottossi.server.ejb.HelloFacade;
+import com.bottossi.server.web.business.HelloWorldBC;
 import com.bottossi.server.web.config.Config;
 
 @WebServlet("/hello")
@@ -24,7 +25,7 @@ public class HelloWorldServlet extends HttpServlet {
 	HelloFacade helloFacade;
 
 	@Inject
-	Config config;
+	HelloWorldBC helloWorldBC;
 
 	@Override
 	protected void doGet(HttpServletRequest request,
@@ -33,7 +34,7 @@ public class HelloWorldServlet extends HttpServlet {
 		logger.info("Iniciando processamento da requisição");
 		
 		String mensagem = helloFacade.hello();
-		String color = config.getColor();
+		String color = helloWorldBC.getColor();
 					
 		response.getWriter().write(
 				"<h1 style='color: " + color + "'>" + mensagem + "</h1>");
