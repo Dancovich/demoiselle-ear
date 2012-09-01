@@ -2,9 +2,9 @@ package com.bottossi.server.web.business;
 
 import javax.inject.Inject;
 
-import com.bottossi.server.web.config.Config;
-
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
+
+import com.bottossi.server.web.config.Config;
 
 @BusinessController
 public class HelloWorldBC {

@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 
-import com.bottossi.server.ejb.HelloFacade;
 import com.bottossi.server.web.business.HelloWorldBC;
-import com.bottossi.server.web.config.Config;
 
 @WebServlet("/hello")
 public class HelloWorldServlet extends HttpServlet {
@@ -21,8 +19,8 @@ public class HelloWorldServlet extends HttpServlet {
 	@Inject
 	Logger logger;
 	
-	@Inject
-	HelloFacade helloFacade;
+//	@Inject
+//	HelloFacade helloFacade;
 
 	@Inject
 	HelloWorldBC helloWorldBC;
@@ -33,7 +31,8 @@ public class HelloWorldServlet extends HttpServlet {
 
 		logger.info("Iniciando processamento da requisição");
 		
-		String mensagem = helloFacade.hello();
+//		String mensagem = helloFacade.hello();
+		String mensagem = "Hello World"; 
 		String color = helloWorldBC.getColor();
 					
 		response.getWriter().write(

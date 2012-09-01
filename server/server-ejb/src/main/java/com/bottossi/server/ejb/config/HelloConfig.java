@@ -1,14 +1,14 @@
 package com.bottossi.server.ejb.config;
 
-import br.gov.frameworkdemoiselle.configuration.Configuration;
 
-@Configuration(resource = "hello")
+//@Configuration(resource = "hello")
 public class HelloConfig {
 
 	private String versao;
 	
 	public String getVersao() {
-		return versao;
+//		return versao;
+		return "v1.0";
 	}
 	
 }
