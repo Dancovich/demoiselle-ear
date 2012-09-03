@@ -16,6 +16,8 @@ import com.bottossi.server.web.business.HelloWorldBC;
 @WebServlet("/hello")
 public class HelloWorldServlet extends HttpServlet {
 
+	private static final long serialVersionUID = 1L;
+
 	@Inject
 	Logger logger;
 	

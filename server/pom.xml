@@ -8,6 +8,12 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>server application</name>
+	
+	<parent>
+		<groupId>br.gov.frameworkdemoiselle</groupId>
+		<artifactId>demoiselle-minimal-parent</artifactId>
+		<version>2.3.0-BETA2</version>
+	</parent>
 
 	<modules>
 		<module>server-ear</module>

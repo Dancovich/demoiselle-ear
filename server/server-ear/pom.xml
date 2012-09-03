@@ -21,42 +21,30 @@
 			<groupId>com.bottossi</groupId>
 			<artifactId>server-web</artifactId>
 			<type>war</type>
+			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>com.bottossi</groupId>
 			<artifactId>server-ejb</artifactId>
 			<type>ejb</type>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>br.gov.frameworkdemoiselle</groupId>
 			<artifactId>demoiselle-core</artifactId>
-			<version>${demoiselle.version}</version>
 			<scope>compile</scope>
 			<type>jar</type>
-			<exclusions>
-				<exclusion>
-					<artifactId>slf4j-api</artifactId>
-					<groupId>org.slf4j</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>validation-api</artifactId>
-					<groupId>javax.validation</groupId>
-				</exclusion>
-				<exclusion>
-					<groupId>javax.enterprise</groupId>
-					<artifactId>cdi-api</artifactId>
-				</exclusion>
-			</exclusions>
 		</dependency>
-		
+
 		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
+			<groupId>br.gov.frameworkdemoiselle</groupId>
+			<artifactId>demoiselle-servlet</artifactId>
+			<scope>compile</scope>
 			<type>jar</type>
-			<scope>provided</scope>
 		</dependency>
-		
+
 	</dependencies>
 
 	<build>
@@ -65,15 +53,27 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ear-plugin</artifactId>
-				<version>2.6</version>
+				<version>2.7</version>
+
 				<configuration>
 					<!-- Tell Maven we are using Java EE 6 -->
 					<version>6</version>
 					<!-- Use Java EE ear libraries as needed. Java EE ear libraries are 
 						in easy way to package any libraries needed in the ear, and automatically 
 						have any modules (EJB-JARs and WARs) use them -->
-					<defaultLibBundleDir>lib</defaultLibBundleDir>
-					<modules></modules>
+					<skinnyWars>true</skinnyWars>
+					<defaultLibBundleDir>lib/</defaultLibBundleDir>
+					<modules>
+						<webModule>
+							<artifactId>server-web</artifactId>
+							<groupId>com.bottossi</groupId>
+							<contextRoot>server-web</contextRoot>
+						</webModule>
+						<ejbModule>
+							<artifactId>server-ejb</artifactId>
+							<groupId>com.bottossi</groupId>
+						</ejbModule>
+					</modules>
 				</configuration>
 			</plugin>
 			<!-- The JBoss AS plugin deploys your ear to a local JBoss AS container -->
@@ -89,6 +89,35 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<artifactId>slf4j-api</artifactId>
+				<groupId>org.slf4j</groupId>
+				<scope>provided</scope>
+				<version>1.6.1</version>
+			</dependency>
+			<dependency>
+				<artifactId>validation-api</artifactId>
+				<groupId>javax.validation</groupId>
+				<scope>provided</scope>
+				<version>1.0.0.GA</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.enterprise</groupId>
+				<artifactId>cdi-api</artifactId>
+				<version>1.0-SP4</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<profiles>
 		<profile>

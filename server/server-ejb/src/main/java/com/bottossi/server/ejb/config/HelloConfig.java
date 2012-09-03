@@ -7,8 +7,8 @@ public class HelloConfig {
 	private String versao;
 	
 	public String getVersao() {
-//		return versao;
-		return "v1.0";
+		return versao;
+//		return "v1.0";
 	}
 	
 }

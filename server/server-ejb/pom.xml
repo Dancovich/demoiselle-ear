@@ -29,7 +29,6 @@
 		<dependency>
 			<groupId>br.gov.frameworkdemoiselle</groupId>
 			<artifactId>demoiselle-core</artifactId>
-			<version>${demoiselle.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
